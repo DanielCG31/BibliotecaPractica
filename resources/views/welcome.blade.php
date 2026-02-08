@@ -8,8 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
-        /* Clase de utilidad para asegurar que el contenido no quede oculto bajo el header fijo */
-        .pt-header { padding-top: 4rem; /* 64px que es la altura del header (h-16) */ }
+        .pt-header { padding-top: 4rem; } /* Ajusta según la altura de tu header */
     </style>
 </head>
 <body class="bg-gray-50 antialiased flex flex-col min-h-screen">
@@ -65,7 +64,8 @@
         
         <section class="relative bg-gray-900 h-[80vh] min-h-[600px] flex items-center overflow-hidden">
              <div class="absolute inset-0 z-0">
-                 <img src="https://images.unsplash.com/photo-1507842217343-583bb72665e3?q=80&w=2830&auto=format&fit=crop" alt="Interior de biblioteca clásica" class="w-full h-full object-cover opacity-40">
+                <img 
+                src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Biblioteca moderna" class="w-full h-full object-cover opacity-40">                
                 <div class="absolute inset-0 bg-gradient-to-b from-gray-900/60 via-gray-900/80 to-gray-900"></div>
             </div>
 
