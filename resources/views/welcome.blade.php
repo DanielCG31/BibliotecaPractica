@@ -7,8 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .pt-header { padding-top: 4rem; } /* Ajusta según la altura de tu header */
+       
     </style>
 </head>
 <body class="bg-gray-50 antialiased flex flex-col min-h-screen">
@@ -22,7 +21,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-indigo-600">
                           <path d="M11.25 4.533A9.707 9.707 0 006 3a9.735 9.735 0 00-3.25.555.75.75 0 00-.5.707v14.25a.75.75 0 001 .707A8.237 8.237 0 016 18.75c1.995 0 3.823.707 5.25 1.886V4.533zM12.75 20.636A8.214 8.214 0 0118 18.75c.966 0 1.89.166 2.75.47v-14.25a.75.75 0 00-.5-.707A9.735 9.735 0 0018 3a9.707 9.707 0 00-5.25 1.533v14.57z" />
                         </svg>
-                        <span class="text-xl font-bold text-gray-900">Biblioteca "LA MUÑE"</span>
+                        <span class="text-xl font-bold text-gray-900">Biblioteca</span>
                     </a>
                 </div>
 
@@ -31,7 +30,7 @@
                     <a href="#" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition">Catálogo</a>
                     <a href="#" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition">Servicios</a>
                     <span class="h-6 w-px bg-gray-200"></span>
-                    <a href="#" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition shadow-sm">
+                    <a href="{{ route('login') }}" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition shadow-sm">
                         Login
                     </a>
                 </nav>
@@ -53,7 +52,7 @@
                 <a href="#" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md w-full text-center transition">Catálogo</a>
                  <a href="#" class="block px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md w-full text-center transition">Servicios</a>
                  <div class="w-full border-t border-gray-200 my-2"></div>
-                 <a href="#" class="block w-full px-4 py-3 text-center font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition shadow-sm">
+                 <a href="{{ route('login') }}" class="block w-full px-4 py-3 text-center font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition shadow-sm">
                     Iniciar Sesión
                 </a>
             </div>
