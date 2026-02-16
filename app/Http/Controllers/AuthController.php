@@ -26,11 +26,33 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
-            'password' => $validatedData['password'],
+            'password' => bcrypt($validatedData['password']),
         ]);
         
         #Redirigir o iniciar sesión
         auth()->login($user);
         return redirect()->route('login')->with('success', 'Registro exitoso. ¡Bienvenido!');
+    }
+
+    public function login(Request $request)
+    {
+        #Validar datos
+        $credentials = $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+        ]);
+
+        #Intentar iniciar sesión
+        if (auth()->attempt($credentials)) {
+            return redirect()->route('home')->with('success', 'Inicio de sesión exitoso. ¡Bienvenido!');
+        }
+
+        return back()->withErrors(['email' => 'Credenciales inválidas.']);
+    }
+
+    public function logout()
+    {
+        auth()->logout();
+        return redirect()->route('login');
     }
 }

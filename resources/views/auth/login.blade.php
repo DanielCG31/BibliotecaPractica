@@ -23,10 +23,10 @@
                         <p class="mt-1 text-sm text-gray-500">Credenciales de acceso.</p>
                     </div>
 
-                    <form class="space-y-4" action="#" method="POST">
+                    <form action="{{ route('login') }}" method="POST" class="space-y-4" >
                         @csrf
                         <div>
-                            <label for="login_email" class="block text-sm font-medium leading-6 text-gray-900">Correo</label>
+                            <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Correo</label>
                             <div class="relative mt-1 rounded-md shadow-sm">
                                 <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                     <svg class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -34,7 +34,7 @@
                                         <path d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z" />
                                     </svg>
                                 </div>
-                                <input id="login_email" name="email" type="email" autocomplete="email" required 
+                                <input id="email" name="email" type="email" autocomplete="email" required 
                                     class="block w-full rounded-lg border-0 py-2.5 pl-9 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     placeholder="correo@ejemplo.com">
                             </div>
@@ -42,7 +42,7 @@
 
                         <div>
                             <div class="flex items-center justify-between">
-                                <label for="login_password" class="block text-sm font-medium leading-6 text-gray-900">Contraseña</label>
+                                <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Contraseña</label>
                                 <div class="text-sm">
                                     <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500 text-xs">¿Olvidaste tu contraseña?</a>
                                 </div>
@@ -53,7 +53,7 @@
                                         <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
                                     </svg>
                                 </div>
-                                <input id="login_password" name="password" type="password" autocomplete="current-password" required 
+                                <input id="password" name="password" type="password" autocomplete="current-password" required 
                                     class="block w-full rounded-lg border-0 py-2.5 pl-9 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     placeholder="••••••••">
                             </div>

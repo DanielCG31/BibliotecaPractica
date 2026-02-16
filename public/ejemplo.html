@@ -164,27 +164,6 @@
 
     </div>
 
-    <script>
-        // Referencias al DOM
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('sidebarOverlay');
-
-        // Función para abrir/cerrar el sidebar en móvil
-        function toggleSidebar() {
-            // En pantallas pequeñas, el sidebar está desplazado a la izquierda (-translate-x-full).
-            // Al hacer toggle, removemos esa clase para que vuelva a su posición original (0).
-            const isClosed = sidebar.classList.contains('-translate-x-full');
-            
-            if (isClosed) {
-                // Abrir
-                sidebar.classList.remove('-translate-x-full');
-                overlay.classList.remove('hidden');
-            } else {
-                // Cerrar
-                sidebar.classList.add('-translate-x-full');
-                overlay.classList.add('hidden');
-            }
-        }
-    </script>
+    
 </body>
 </html>
