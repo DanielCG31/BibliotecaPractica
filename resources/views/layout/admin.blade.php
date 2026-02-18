@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administración Biblioteca</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     
     <style>
@@ -25,7 +26,7 @@
         
         <div class="h-16 flex items-center justify-center border-b border-slate-700 bg-slate-950">
             <h1 class="text-xl font-bold flex items-center gap-2">
-                <i class="ph ph-books text-indigo-500 text-2xl"></i>
+                <i  class="ph ph-books text-indigo-500 text-2xl"></i>
                 BiblioAdmin
             </h1>
         </div>
@@ -33,7 +34,7 @@
         <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
             <p class="px-2 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Principal</p>
             
-            <a href="#" class="flex items-center gap-3 px-4 py-3 bg-indigo-600 text-white rounded-lg transition-colors hover:bg-indigo-700">
+            <a href="{{ route('home') }}" class="flex items-center gap-3 px-4 py-3  text-white rounded-lg transition-colors hover:bg-slate-700">
                 <i class="ph ph-house text-xl"></i>
                 <span>Inicio</span>
             </a>
@@ -76,10 +77,11 @@
             <h2 class="text-lg font-semibold lg:hidden">Dashboard</h2>
 
             <nav class="hidden lg:flex items-center space-x-6">
-                <a href="#" class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors">Inicio</a>
+                <a href="{{ route('home') }}" class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors">Inicio</a>
                 <a href="#" class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors">Usuarios</a>
                 <a href="#" class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors">Libros</a>
                 <a href="#" class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors">Préstamos</a>
+                <a href="{{ route('categorias.index') }}" class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors">Categorías</a>
                 <span class="h-4 w-px bg-gray-300 mx-2"></span>
                 <a href="{{ route('logout') }}" class="text-sm font-medium text-red-600 hover:text-red-700 transition-colors">Salir</a>
             </nav>
@@ -97,7 +99,7 @@
 
     
 @yield('content')
-        @include('partials.admin.footer')
+       @include('partials.admin.footer')
     </div>
-</body>
+</body> 
 </html>
