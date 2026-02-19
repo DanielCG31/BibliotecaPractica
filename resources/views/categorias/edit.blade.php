@@ -13,7 +13,7 @@
                 <div class="flex items-center justify-between">
 
             <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold px-4 py-2 rounded">Actualizar Categoría</button>
-            <a href="{{ route('categorias.index') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold px-4 py-2 rounded">Cancelar</a>
+            <a href="{{ route('categorias.index') }}" class="bg-gray-500 hover:bg-gray-700 text-white font-bold px-4 py-2 rounded inline-block">Cancelar</a>
         </div>
         </form>
     </div>
