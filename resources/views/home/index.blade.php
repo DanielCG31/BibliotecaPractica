@@ -14,7 +14,7 @@
                             <h3 class="text-gray-500 text-sm font-medium">Libros Totales</h3>
                             <div class="p-2 bg-blue-50 rounded-lg text-blue-600"><i class="ph ph-books text-xl"></i></div>
                         </div>
-                        <p class="text-3xl font-bold text-gray-900">1,240</p>
+                        <p class="text-3xl font-bold text-gray-900">{{ $totalLibros }}</p>
                     </div>
                     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
                         <div class="flex items-center justify-between mb-4">
@@ -95,8 +95,11 @@
                                     <td class="px-6 py-4">{{ $libro->editorial }}</td>
                                     <td class="px-6 py-4">{{ $libro->categoria->nombre }}</td>
                                     <td class="px-6 py-4 text-right">
-                                        <button class="text-gray-400 hover:text-indigo-600 transition-colors"><i class="ph ph-pencil-simple text-lg"></i></button>
-                                        <button class="text-gray-400 hover:text-red-600 transition-colors ml-2"><i class="ph ph-trash text-lg"></i></button>
+                                        <a href="{{ route('libros.edit', $libro->id) }}" class="text-gray-400 hover:text-indigo-600 transition-colors"><i class="ph ph-pencil-simple text-lg"></i></a>
+                                        <form action="{{ route('libros.destroy', $libro->id) }}" method="POST" class="inline" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este libro?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="text-gray-400 hover:text-red-600 transition-colors"><i class="ph ph-trash text-lg"></i></button>
                                     </td>
                                 </tr>
                                 @endforeach

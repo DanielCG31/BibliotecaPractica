@@ -30,6 +30,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/libros/create', [LibrosController::class, 'create'])->name('libros.create');
     Route::post('/libros/store', [LibrosController::class, 'store'])->name('libros.store');
     Route::get('/libros/index', [LibrosController::class, 'index'])->name('libros.index');
+    Route::get('/libros/{id}/edit', [LibrosController::class, 'edit'])->name('libros.edit');
+    Route::put('/libros/{id}', [LibrosController::class, 'update'])->name('libros.update');
+    Route::delete('/libros/{id}', [LibrosController::class, 'destroy'])->name('libros.destroy');
 });
 
 
