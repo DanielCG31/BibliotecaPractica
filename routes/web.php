@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\LibrosController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,6 +26,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/categorias/{id}/edit', [CategoriasController::class, 'edit'])->name('categorias.edit');
     Route::put('/categorias/{id}', [CategoriasController::class, 'update'])->name('categorias.update');
     Route::delete('/categorias/{id}', [CategoriasController::class, 'destroy'])->name('categorias.destroy');
+
+    Route::get('/libros/create', [LibrosController::class, 'create'])->name('libros.create');
+    Route::post('/libros/store', [LibrosController::class, 'store'])->name('libros.store');
+    Route::get('/libros/index', [LibrosController::class, 'index'])->name('libros.index');
 });
 
 
