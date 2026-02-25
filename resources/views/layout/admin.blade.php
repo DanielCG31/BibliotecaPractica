@@ -20,7 +20,7 @@
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans antialiased flex h-screen overflow-hidden">
 
-    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden lg:hidden"></div>
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black/50 z-20 hidden lg:hidden transition-opacity opacity-0"></div>
 
     <aside id="sidebar" class="fixed inset-y-0 left-0 z-30 w-64 bg-slate-900 text-white transform -translate-x-full transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 flex flex-col h-full shadow-xl">
         
@@ -101,5 +101,37 @@
 @yield('content')
        @include('partials.admin.footer')
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebarOverlay');
+            const menuButton = document.querySelector('button.lg\\:hidden');
+
+            function toggleSidebar() {
+                sidebar.classList.toggle('-translate-x-full');
+                
+                if (sidebarOverlay.classList.contains('hidden')) {
+                    sidebarOverlay.classList.remove('hidden');
+                    setTimeout(() => {
+                        sidebarOverlay.classList.remove('opacity-0');
+                    }, 10);
+                } else {
+                    sidebarOverlay.classList.add('opacity-0');
+                    setTimeout(() => {
+                        sidebarOverlay.classList.add('hidden');
+                    }, 300);
+                }
+            }
+
+            if (menuButton) {
+                menuButton.addEventListener('click', toggleSidebar);
+            }
+
+            if (sidebarOverlay) {
+                sidebarOverlay.addEventListener('click', toggleSidebar);
+            }
+        });
+    </script>
 </body> 
 </html>

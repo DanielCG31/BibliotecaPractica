@@ -9,8 +9,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $libros = Libro::all();
-        $totalLibros = $libros->count();
+        $libros = Libro::with('categoria')->paginate(4);
+        $totalLibros = Libro::count();
         return view('home.index', compact('libros', 'totalLibros'));
     }
 

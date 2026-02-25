@@ -67,14 +67,14 @@
 <!-- Libros -->
                 <div class="mt-8 bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                     <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center">
-                        <h3 class="font-bold text-gray-800">Lista de libros</h3>
+                        <h3 class="font-bold text-gray-800">Lista de libros con paginacion</h3>
                         <a href="{{ route('libros.create') }}" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium py-2 px-4 rounded-lg flex items-center gap-2 transition-colors">
                             <i class="ph ph-plus-circle text-lg"></i>
                             Agregar libro
                         </a>
                     </div>
                     <div class="overflow-x-auto">
-                        <table class="w-full text-left text-sm text-gray-600">
+                        <table class="w-full text-left text-sm text-gray-600" >
                             <thead class="bg-gray-50 text-gray-900 font-semibold">
                                 <tr>
                                     <th class="px-6 py-3">Título</th>
@@ -86,9 +86,8 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-100">
-                               
+                                @foreach($libros as $libro)
                                 <tr class="hover:bg-gray-50 transition-colors">
-                                     @foreach($libros as $libro)
                                     <td class="px-6 py-4 font-medium text-gray-900">{{ $libro->nombre }}</td>
                                     <td class="px-6 py-4">{{ $libro->autor }}</td>
                                     <td class="px-6 py-4">{{ $libro->isbn }}</td>
@@ -100,11 +99,16 @@
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="text-gray-400 hover:text-red-600 transition-colors"><i class="ph ph-trash text-lg"></i></button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
+                            
                         </table>
+                    </div>
+                    <div class="px-6 py-4 border-t border-gray-100">
+                        {{ $libros->links() }}
                     </div>
                 </div>
             </div>

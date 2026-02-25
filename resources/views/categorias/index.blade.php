@@ -1,7 +1,7 @@
 @extends('layout.admin')
 @section('content')
 
-    <div class="p-4">
+    <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 p-6">
         <h1 class="text-2xl font-bold mb-4">Categorías</h1>
 
         @if (session('success'))
@@ -40,5 +40,5 @@
                 </tbody>
             </table>
         </div>
-    </div>
+    </main>
 @endsection
