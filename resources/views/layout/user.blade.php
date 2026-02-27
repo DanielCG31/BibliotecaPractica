@@ -39,18 +39,9 @@
                 <span>Inicio</span>
             </a>
 
-            <a href="{{ route('libros.index') }}" class="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-800 hover:text-white rounded-lg transition-colors">
-                <i class="ph ph-book-open text-xl"></i>
-                <span>Libros</span>
-            </a>
-
             <a href="#" class="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-800 hover:text-white rounded-lg transition-colors">
                 <i class="ph ph-hand-coins text-xl"></i>
                 <span>Préstamos</span>
-            </a>
-            <a href="{{ route('categorias.index') }}" class="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-800 hover:text-white rounded-lg transition-colors">
-                <i class="ph ph-tag text-xl"></i>
-                <span>Categorias</span>
             </a>
 
             <div class="border-t border-slate-700 my-4"></div>
@@ -78,21 +69,18 @@
 
             <nav class="hidden lg:flex items-center space-x-6">
                 <a href="{{ route('home') }}" class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors">Inicio</a>
-                <a href="#" class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors">Usuarios</a>
-                <a href="{{ route('libros.index') }}" class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors">Libros</a>
                 <a href="#" class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors">Préstamos</a>
-                <a href="{{ route('categorias.index') }}" class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors">Categorías</a>
-                <span class="h-4 w-px bg-gray-300 mx-2"></span>
                 <a href="{{ route('logout') }}" class="text-sm font-medium text-red-600 hover:text-red-700 transition-colors">Salir</a>
             </nav>
 
             <div class="flex items-center gap-3">
                 <div class="hidden sm:block text-right">
-                    <p class="text-sm font-medium text-gray-900">{{ substr(Auth::user()->name, 0, 10) }}</p>
+                    <span class="font-medium">{{Auth::user()->name}}</span>
                     <p class="text-xs text-gray-500">{{ Auth::user()->email }}</p>
                 </div>
                 <div class="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold">
-                    A
+                    <span class="font-bold">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</span>
+
                 </div>
             </div>
         </header>

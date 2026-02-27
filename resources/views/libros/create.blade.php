@@ -1,7 +1,8 @@
 @extends('layout.admin')
 
 @section('content')
-  <div class="p-4">
+<main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 p-6"> 
+    <div class="container mx-auto"> 
         <h1 class="text-2xl font-bold mb-4">Agregar Libro</h1>
         
         <form action="{{ route('libros.store') }}" method="POST" class="bg-white shadow rounded-lg p-6">
@@ -36,5 +37,6 @@
             <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold px-4 py-2 rounded">Guardar Libro</button>
             <a href="{{ route('home') }}" class="ml-4 bg-gray-500 hover:bg-gray-700 text-white font-bold px-4 py-2 rounded">Cancelar</a>
         </form>
-    
-    @endsection
+    </div>
+  </main>
+@endsection

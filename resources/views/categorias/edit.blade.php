@@ -1,7 +1,10 @@
 @extends('layout.admin' )
 
 @section('content')
-    <div class="p-4">
+
+    <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 p-6">
+        <div class="container mx-auto">
+            
         <h1 class="text-2xl font-bold mb-4">Editar Categoría</h1>
         <form action="{{ route('categorias.update', $categoria->id) }}" method="POST" class="bg-white shadow rounded-lg p-6">
             @csrf
@@ -17,5 +20,6 @@
         </div>
         </form>
     </div>
+    </main>
 
 @endsection

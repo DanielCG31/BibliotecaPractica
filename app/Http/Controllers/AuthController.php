@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -27,10 +28,10 @@ class AuthController extends Controller
             'name' => $validatedData['name'],
             'email' => $validatedData['email'],
             'password' => bcrypt($validatedData['password']),
+            'user_type' => 'user', // Asignar tipo de usuario por defecto
         ]);
-        
         #Redirigir o iniciar sesión
-        auth()->login($user);
+        Auth::login($user);
         return redirect()->route('login')->with('success', 'Registro exitoso. ¡Bienvenido!');
     }
 
