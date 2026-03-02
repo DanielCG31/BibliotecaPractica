@@ -20,7 +20,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::get('/categorias', [CategoriasController::class, 'index'])->name('categorias.index');
+   
+});
+
+Route::middleware(['auth', 'user_type:admin'])->group(function () {
+     Route::get('/categorias', [CategoriasController::class, 'index'])->name('categorias.index');
     Route::get('/categorias/create', [CategoriasController::class, 'create'])->name('categorias.create');
     Route::post('/categorias/store', [CategoriasController::class, 'store'])->name('categorias.store');
     Route::get('/categorias/{id}/edit', [CategoriasController::class, 'edit'])->name('categorias.edit');
@@ -35,5 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/libros/{id}', [LibrosController::class, 'destroy'])->name('libros.destroy');
 });
 
-
+Route::middleware(['auth', 'user_type:user'])->group(function () {
+    
+});
 
