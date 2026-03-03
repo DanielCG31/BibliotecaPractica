@@ -44,6 +44,11 @@
                 <span>Libros</span>
             </a>
 
+            <a href="{{ route('usuarios.index') }}" class="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-800 hover:text-white rounded-lg transition-colors">
+                <i class="ph ph-users text-xl"></i>
+                <span>Usuarios</span>
+            </a>
+
             <a href="#" class="flex items-center gap-3 px-4 py-3 text-slate-300 hover:bg-slate-800 hover:text-white rounded-lg transition-colors">
                 <i class="ph ph-hand-coins text-xl"></i>
                 <span>Préstamos</span>
@@ -78,7 +83,7 @@
 
             <nav class="hidden lg:flex items-center space-x-6">
                 <a href="{{ route('home') }}" class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors">Inicio</a>
-                <a href="#" class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors">Usuarios</a>
+                <a href="{{ route('usuarios.index') }}" class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors">Usuarios</a>
                 <a href="{{ route('libros.index') }}" class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors">Libros</a>
                 <a href="#" class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors">Préstamos</a>
                 <a href="{{ route('categorias.index') }}" class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition-colors">Categorías</a>
