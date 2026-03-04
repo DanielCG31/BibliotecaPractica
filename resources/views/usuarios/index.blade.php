@@ -11,7 +11,7 @@
             </div>
         @endif
 
-        <a href="" class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded mb-4 inline-block">Crear Usuario</a>
+        <a href="{{ route('usuarios.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded mb-4 inline-block">Crear Usuario</a>
 
         <div class="bg-white shadow rounded-lg overflow-hidden">
             <div class="overflow-x-auto">
@@ -33,10 +33,10 @@
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $usuario->email }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $usuario->user_type }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <a href="" class="text-indigo-600 hover:text-indigo-900 mr-3">
+                                    <a href="{{ route('usuarios.edit', $usuario->id) }}" class="text-indigo-600 hover:text-indigo-900 mr-3">
                                         <i class="ph ph-pencil-simple text-xl"></i>
                                     </a>
-                                    <form action="" method="POST" class="inline-block" onsubmit="return confirm('¿Confirma eliminar este usuario?')">
+                                    <form action="{{ route('usuarios.destroy', $usuario->id) }}" method="POST" class="inline-block" onsubmit="return confirm('¿Confirma eliminar este usuario?')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="text-red-600 hover:text-red-900">

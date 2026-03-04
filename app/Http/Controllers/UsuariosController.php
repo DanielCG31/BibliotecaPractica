@@ -12,4 +12,60 @@ class UsuariosController extends Controller
         $usuarios = User::all();
         return view('usuarios.index', compact('usuarios'));
     }
+
+    public function create()
+    {
+        return view('usuarios.create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|string|max:255|confirmed|min:8',
+            'password_confirmation' => 'required|string|max:255|min:8',
+            'user_type' => 'required|string|max:255',
+        ]);
+
+        $user = new User();
+        $user->name = $request->nombre;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->user_type = $request->user_type;
+        $user->save();
+
+        return redirect()->route('usuarios.index')->with('success', 'Usuario creado exitosamente.');
+    }
+
+    public function edit($id)
+    {
+        $usuario = User::findOrFail($id);
+        return view('usuarios.edit', compact('usuario'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . $id,
+            'user_type' => 'required|string|max:255|in:admin,user',
+        ]);
+
+        $usuario = User::findOrFail($id);
+        $usuario->name = $request->nombre;
+        $usuario->email = $request->email;
+        $usuario->user_type = $request->user_type;
+        $usuario->save();
+
+        return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado exitosamente.');
+    }
+
+    public function destroy($id)
+    {
+        $usuario = User::findOrFail($id);
+        $usuario->delete();
+
+        return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado exitosamente.');
+    }
 }
