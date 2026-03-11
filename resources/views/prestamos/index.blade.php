@@ -11,7 +11,7 @@
             </div>
             @endif
 
-            <a href="" class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded mb-4 inline-block">Crear Prestamo</a>
+            <a href="{{ route('prestamos.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 py-2 rounded mb-4 inline-block">Crear Prestamo</a>
 
             <div class="overflow-x-auto">
                 <table class="w-full text-left text-sm text-gray-600">
@@ -28,8 +28,8 @@
                         @foreach($prestamos as $prestamo)
                             <tr class="hover:bg-gray-50 transition-colors">
                                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{{ $prestamo->id }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $prestamo->user->name }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $prestamo->book->title }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $prestamo->usuario->name ?? 'Usuario no encontrado' }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $prestamo->libro->nombre ?? 'Libro no encontrado' }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $prestamo->loan_date }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                     <a href="" class="text-indigo-600 hover:text-indigo-900 mr-3">
@@ -38,13 +38,7 @@
                                     <a href="" class="text-red-600 hover:text-red-900 mr-3">
                                         <i class="ph ph-trash text-xl"></i>
                                     </a> 
-                                    <!-- <form action="{{ route('prestamos.destroy', $prestamo->id) }}" method="POST" class="inline-block" onsubmit="return confirm('¿Confirma eliminar este préstamo?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="text-red-600 hover:text-red-900">
-                                            <i class="ph ph-trash text-xl"></i>
-                                        </button>
-                                    </form> -->
+                                    
                                 </td>
                             </tr>
                         @endforeach
