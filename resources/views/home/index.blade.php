@@ -35,7 +35,7 @@
                 <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                     <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center">
                         <h3 class="font-bold text-gray-800">Préstamos Recientes</h3>
-                        <button class="text-sm text-indigo-600 hover:underline">Ver todos</button>
+                        <a class="text-sm text-indigo-600 hover:underline" href="{{ route('prestamos.index') }}">Ver todos</a>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left text-sm text-gray-600">
@@ -48,18 +48,20 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-100">
-                                <tr class="hover:bg-gray-50">
-                                    <td class="px-6 py-4">Cien Años de Soledad</td>
-                                    <td class="px-6 py-4">Juan Pérez</td>
-                                    <td class="px-6 py-4">15 Oct 2023</td>
-                                    <td class="px-6 py-4"><span class="px-2 py-1 rounded-full text-xs bg-green-100 text-green-700">A tiempo</span></td>
+                                @foreach($prestamos as $prestamo)
+                                <tr class="hover:bg-gray-50 transition-colors">
+                                    <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{{ $prestamo->libro->nombre ?? 'Libro no encontrado' }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $prestamo->usuario->name ?? 'Usuario no encontrado' }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $prestamo->created_at }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        @if($prestamo->created_at->addDays(14) > now())
+                                            <span class="px-2 py-1 rounded-full text-xs bg-green-100 text-green-700">En tiempo</span>
+                                        @else
+                                            <span class="px-2 py-1 rounded-full text-xs bg-red-100 text-red-700">Atrasado</span>
+                                        @endif
+                                    </td>
                                 </tr>
-                                <tr class="hover:bg-gray-50">
-                                    <td class="px-6 py-4">Clean Code</td>
-                                    <td class="px-6 py-4">Maria Garcia</td>
-                                    <td class="px-6 py-4">12 Oct 2023</td>
-                                    <td class="px-6 py-4"><span class="px-2 py-1 rounded-full text-xs bg-red-100 text-red-700">Atrasado</span></td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -81,6 +83,7 @@
                                     <th class="px-6 py-3">Autor</th>
                                     <th class="px-6 py-3">ISBN</th>
                                     <th class="px-6 py-3">Editorial</th>
+                                    <th class="px-6 py-3">Disponibilidad</th>
                                     <th class="px-6 py-3">Categoría</th>
                                     <th class="px-6 py-3 text-right">Acciones</th>
                                 </tr>
@@ -92,6 +95,13 @@
                                     <td class="px-6 py-4">{{ $libro->autor }}</td>
                                     <td class="px-6 py-4">{{ $libro->isbn }}</td>
                                     <td class="px-6 py-4">{{ $libro->editorial }}</td>
+                                    <td class="px-6 py-4">
+                                        @if($libro->estatus == 0)
+                                            <span class="px-2 py-1 rounded-full text-xs bg-green-100 text-green-700">Disponible</span>
+                                        @else
+                                            <span class="px-2 py-1 rounded-full text-xs bg-red-100 text-red-700">Prestado</span>
+                                        @endif
+                                    </td>
                                     <td class="px-6 py-4">{{ $libro->categoria->nombre }}</td>
                                     <td class="px-6 py-4 text-right">
                                         <a href="{{ route('libros.edit', $libro->id) }}" class="text-gray-400 hover:text-indigo-600 transition-colors"><i class="ph ph-pencil-simple text-lg"></i></a>

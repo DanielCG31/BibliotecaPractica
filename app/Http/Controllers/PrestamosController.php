@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Libro;
 use Illuminate\Support\Facades\DB;
 
+use function Symfony\Component\Clock\now;
 
 class PrestamosController extends Controller
 {
@@ -45,7 +46,7 @@ class PrestamosController extends Controller
         
         $usuario_id = $request->input('usuario_id');
         $usuario = User::FindOrFail($usuario_id);
-        $libros = Libro::all();
+        $libros = Libro::where('estatus', 0)->orderBy('id', 'asc')->get();
         return view('prestamos.select_libro', compact('usuario', 'libros'));
     }
 
@@ -76,5 +77,25 @@ class PrestamosController extends Controller
             DB::rollback();
             return redirect()->route('prestamos.index')->with('error', 'Error al registrar el préstamo: ' . $e->getMessage());
         }
+    }
+
+    public function entregar($id){
+
+        DB::beginTransaction();
+        try {
+            $prestamo = Prestamo::findOrFail($id);
+            $prestamo->estado = 'entregado';
+            $prestamo->fecha_entrega = now();
+            $prestamo->save();
+
+            $libro = Libro::find($prestamo->libro_id);
+            $libro->estatus = 0; // Marcar como disponible
+            $libro->save();
+            DB::commit();
+            return redirect()->route('prestamos.index')->with('success', 'Libro entregado exitosamente.');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->route('prestamos.index')->with('error', 'Error al entregar el libro: ' . $e->getMessage());
+        }      
     }
 }
