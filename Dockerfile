@@ -1,6 +1,6 @@
 FROM php:8.4-fpm
 
-# Instalar dependencias del sistema
+# Instalar dependencias del sistema + NODE.JS y NPM
 RUN apt-get update && apt-get install -y \
     nginx \
     git \
@@ -11,6 +11,9 @@ RUN apt-get update && apt-get install -y \
     zip \
     curl \
     libpq-dev \
+    gnupg \
+    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    && apt-get install -y nodejs \
     && docker-php-ext-install pdo pdo_mysql pdo_pgsql mbstring exif pcntl bcmath gd
 
 # Instalar Composer
@@ -24,6 +27,9 @@ COPY . .
 
 # Instalar dependencias de Laravel
 RUN composer install --no-dev --optimize-autoloader
+
+# --- NUEVO PASO: Compilar assets de Vite ---
+RUN npm install && npm run build
 
 # Permisos
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
