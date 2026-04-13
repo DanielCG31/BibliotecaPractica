@@ -75,7 +75,7 @@
 
             <div class="flex items-center gap-3">
                 <div class="hidden sm:block text-right">
-                    <span class="font-medium">{{Auth::user()->name}}</span>
+                    <span class="text-sm font-medium text-gray-900"><a href="{{ route('usuarios.profile') }}" class="hover:underline">{{ Auth::user()->name }}</a></span>
                     <p class="text-xs text-gray-500">{{ Auth::user()->email }}</p>
                 </div>
                 <div class="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold">

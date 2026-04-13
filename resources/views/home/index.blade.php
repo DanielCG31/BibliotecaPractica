@@ -18,17 +18,24 @@
                     </div>
                     <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
                         <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-gray-500 text-sm font-medium">Préstamos Activos</h3>
+                            <h3 class="text-gray-500 text-sm font-medium">Libros Prestados</h3>
                             <div class="p-2 bg-orange-50 rounded-lg text-orange-600"><i class="ph ph-clock-countdown text-xl"></i></div>
                         </div>
-                        <p class="text-3xl font-bold text-gray-900">85</p>
+                        <p class="text-3xl font-bold text-gray-900">{{ $libros_prestados }}</p>
                     </div>
                      <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
                         <div class="flex items-center justify-between mb-4">
                             <h3 class="text-gray-500 text-sm font-medium">Usuarios</h3>
                             <div class="p-2 bg-green-50 rounded-lg text-green-600"><i class="ph ph-users text-xl"></i></div>
                         </div>
-                        <p class="text-3xl font-bold text-gray-900">320</p>
+                        <p class="text-3xl font-bold text-gray-900">{{ $total_usuarios }}</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-sm p-6 border border-gray-100">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-gray-500 text-sm font-medium">Devoluciones Pendientes</h3>
+                            <div class="p-2 bg-red-50 rounded-lg text-red-600"><i class="ph ph-clock text-xl"></i></div>
+                        </div>
+                        <p class="text-3xl font-bold text-gray-900">{{ $devoluciones_pendientes }}</p>
                     </div>
                 </div>
 
@@ -69,7 +76,7 @@
 <!-- Libros -->
                 <div class="mt-8 bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
                     <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center">
-                        <h3 class="font-bold text-gray-800">Lista de libros con paginacion</h3>
+                        <h3 class="font-bold text-gray-800">Lista de libros</h3>
                         <a href="{{ route('libros.create') }}" class="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium py-2 px-4 rounded-lg flex items-center gap-2 transition-colors">
                             <i class="ph ph-plus-circle text-lg"></i>
                             Agregar libro

@@ -93,11 +93,11 @@
 
             <div class="flex items-center gap-3">
                 <div class="hidden sm:block text-right">
-                    <p class="text-sm font-medium text-gray-900">{{ substr(Auth::user()->name, 0, 10) }}</p>
+                    <p class="text-sm font-medium text-gray-900"><a href="{{ route('usuarios.profile') }}" class="hover:underline">{{ Auth::user()->name }}</a></p>
                     <p class="text-xs text-gray-500">{{ Auth::user()->email }}</p>
                 </div>
                 <div class="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold">
-                    A
+                    <span class="font-bold">{{ strtoupper(substr(Auth::user()->name, 0, 1)) }}</span>
                 </div>
             </div>
         </header>
