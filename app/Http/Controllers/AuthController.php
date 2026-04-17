@@ -44,16 +44,16 @@ class AuthController extends Controller
         ]);
 
         #Intentar iniciar sesión
-        if (auth()->attempt($credentials)) {
+        if (Auth::attempt($credentials)) {
             return redirect()->route('home')->with('success', 'Inicio de sesión exitoso. ¡Bienvenido!');
         }
 
         return back()->withErrors(['email' => 'Credenciales inválidas.']);
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        auth()->logout();
+        Auth::logout();
         return redirect()->route('login');
     }
 }
