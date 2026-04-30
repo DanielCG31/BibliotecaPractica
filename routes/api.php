@@ -12,3 +12,4 @@ Route::get('/user', function (Request $request) {
 Route::post('/login', [ApiController::class, 'login']);
 Route::post('/logout', [ApiController::class, 'logout'])->middleware('auth:sanctum');
 Route::get('/libros-disponibles', [ApiController::class, 'libros_disponibles'])->middleware('auth:sanctum');
+Route::post('/entrega-libro', [ApiController::class, 'entrega_libro'])->middleware('auth:sanctum');
